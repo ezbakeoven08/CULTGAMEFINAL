@@ -1,13 +1,15 @@
-
 workflows:
-  android-workflow:
+  build-android:
     name: IdleCult Android Build
     environment:
       flutter: stable
+    working_directory: .
     scripts:
-      - name: Build APK
+      - name: Get packages
         script: |
           flutter pub get
+      - name: Build APK
+        script: |
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
